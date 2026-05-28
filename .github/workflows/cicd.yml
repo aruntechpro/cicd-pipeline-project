@@ -43,10 +43,9 @@ jobs:
     - name: Gitleaks Code Scan
       run: gitleaks detect source . -r gitleaks-report.json -f json
 
-
   buils_docker_image_and_push:
     runs-on: self-hosted
-    needs: build_project_and_sonar_scan
+    needs: securitycheck
     steps:
     - uses: actions/checkout@v4
     - name: Download JAR artifact
